@@ -32,10 +32,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BirthdayGreetingWithText(name: String, from: String){
-    Column(content =  {
+    Column {
         Text(text = "Happy Birthday  $name", fontSize = 36.sp)
         Text(text = from, fontSize = 24.sp)
-    })
+    }
 }
 
 @Preview(showBackground = true)
