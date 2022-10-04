@@ -2,17 +2,17 @@ package com.ayesigyederrick.happybirthday
 
 import android.media.Image
 import android.os.Bundle
+import android.support.v4.os.IResultReceiver.Default
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background) {
-                    BirthdayGreetingWithText(name = "Happy Birthday Derrick", "All the Best from Cassper")
+                    BirthdayGreetingWithText(name = "Derrick", "All the Best from Cassper")
                 }
             }
         }
@@ -37,7 +37,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BirthdayGreetingWithImage(name:String, from: String){
     val image = painterResource(id = R.drawable.androidparty)
-    Image(painter = image, contentDescription = null)
+    Box{
+        Image(painter = image,
+            contentDescription = null,
+            modifier = Modifier.fillMaxHeight().fillMaxWidth(),
+            contentScale = ContentScale.Crop
+        )
+        BirthdayGreetingWithText(name = name, from = from)
+    }
+
 }
 
 @Composable
