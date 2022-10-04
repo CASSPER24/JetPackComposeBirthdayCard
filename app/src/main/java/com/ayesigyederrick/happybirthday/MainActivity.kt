@@ -1,8 +1,10 @@
 package com.ayesigyederrick.happybirthday
 
+import android.media.Image
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +13,8 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.ayesigyederrick.happybirthday.ui.theme.HappyBirthdayTheme
@@ -31,6 +35,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun BirthdayGreetingWithImage(name:String, from: String){
+    val image = painterResource(id = R.drawable.androidparty)
+    Image(painter = image, contentDescription = null)
+}
+
+@Composable
 fun BirthdayGreetingWithText(name: String, from: String){
     Column {
         Text(text = "Happy Birthday  $name", fontSize = 36.sp)
@@ -42,6 +52,6 @@ fun BirthdayGreetingWithText(name: String, from: String){
 @Composable
 fun DefaultPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithText("Derrick", "All the Best from Cassper")
+        BirthdayGreetingWithImage("Derrick", "All the Best from Cassper")
     }
 }
