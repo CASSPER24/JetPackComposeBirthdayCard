@@ -45,7 +45,9 @@ fun BirthdayGreetingWithImage(name:String, from: String){
     Box{
         Image(painter = image,
             contentDescription = null,
-            modifier = Modifier.fillMaxHeight().fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
             contentScale = ContentScale.Crop
         )
         BirthdayGreetingWithText(name = name, from = from)
@@ -53,19 +55,22 @@ fun BirthdayGreetingWithImage(name:String, from: String){
 
 }
 
+
 @Composable
 fun BirthdayGreetingWithText(name: String, from: String){
     Column {
         Text(text = "Happy Birthday  $name",
             fontSize = 36.sp,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .wrapContentWidth(align = Alignment.Start)
                 .padding(start = 16.dp, top = 16.dp)
         )
         Text(text = from,
             fontSize = 24.sp,
             modifier = Modifier
-                .fillMaxWidth().wrapContentWidth(align = Alignment.End)
+                .fillMaxWidth()
+                .wrapContentWidth(align = Alignment.End)
                 .padding(start = 16.dp, end = 16.dp)
                 .background(color = Color.Green)
             )
@@ -73,7 +78,7 @@ fun BirthdayGreetingWithText(name: String, from: String){
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
 fun DefaultPreview() {
     HappyBirthdayTheme {
